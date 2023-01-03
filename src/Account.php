@@ -1,6 +1,6 @@
 <?php
 
-namespace SalimId\Telegraph\Models;
+namespace SalimId\Telegraph;
 
 use SalimId\Telegraph\Exception;
 use SalimId\Telegraph\Client;
@@ -131,7 +131,15 @@ class Account extends Model
      */
     public function revoke(): static
     {
-        return $this->perform('/revokeAccessToken');
+        $active = Client::token() === $this->id();
+
+        $this->perform('/revokeAccessToken');
+
+        if ($active) {
+            $this->use();
+        }
+
+        return $this;
     }
 
     /**

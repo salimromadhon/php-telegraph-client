@@ -1,6 +1,6 @@
 <?php
 
-namespace SalimId\Telegraph\Models;
+namespace SalimId\Telegraph;
 
 use SalimId\Telegraph\Exception;
 use SalimId\Telegraph\Client;
