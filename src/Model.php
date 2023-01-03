@@ -265,6 +265,28 @@ class Model
     }
 
     /**
+     * Manually perform an action to the endpoint.
+     *
+     * @param string $url
+     * @param array<string, mixed> $params
+     * @return static
+     */
+    protected function perform(string $url, array $params = []): static
+    {
+        $params = array_merge(
+            $this->getDefaultParams(),
+            $this->data,
+            $params,
+        );
+
+        $data = Client::request('POST', $url, [
+            'json' => $params,
+        ]);
+
+        return $this->fillRaw($data);
+    }
+
+    /**
      * Get default params.
      *
      * @return array<string, mixed>

@@ -123,4 +123,14 @@ class Account extends Model
 
         return $this;
     }
+
+    /**
+     * Revoke the current access token and get a new one.
+     *
+     * @return static
+     */
+    public function revoke(): static
+    {
+        return $this->perform('/revokeAccessToken');
+    }
 }
