@@ -113,7 +113,7 @@ class Account extends Model
      *
      * @return static
      */
-    public function use()
+    public function use(): static
     {
         if (empty($this->id())) {
             throw new Exception('Cannot use account without token.');
