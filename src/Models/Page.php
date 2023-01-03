@@ -101,4 +101,30 @@ class Page extends Model
             'return_content' => true,
         ];
     }
+
+    /**
+     * Get pages.
+     *
+     * @param integer $offset
+     * @param integer $limit
+     * @return array<static>
+     */
+    public static function get(int $offset = 0, int $limit = 50)
+    {
+        $data = Client::request('POST', '/getPageList', [
+            'json' => compact('offset', 'limit'),
+        ]);
+
+        if (!isset($data['pages']) || !is_array($data['pages'])) {
+            throw new Exception('Failed to get pages.');
+        }
+
+        $pages = $data['pages'];
+
+        foreach ($pages as &$page) {
+            $page = static::make($page);
+        }
+
+        return $pages;
+    }
 }

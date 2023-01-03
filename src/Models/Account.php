@@ -133,4 +133,31 @@ class Account extends Model
     {
         return $this->perform('/revokeAccessToken');
     }
+
+    /**
+     * Get/make a page using current account.
+     *
+     * @param string|null $identifier
+     * @return Page|null
+     */
+    public function page(?string $identifier = null): ?Page
+    {
+        $this->use();
+
+        return isset($identifier) ? Page::find($identifier) : new Page;
+    }
+
+    /**
+     * Get pages of the current account.
+     *
+     * @param integer $offset
+     * @param integer $limit
+     * @return array<Page>
+     */
+    public function pages(int $offset = 0, int $limit = 50): array
+    {
+        $this->use();
+
+        return Page::get($offset, $limit);
+    }
 }

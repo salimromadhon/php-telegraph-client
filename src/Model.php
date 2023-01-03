@@ -35,13 +35,6 @@ class Model
     protected array $data = [];
 
     /**
-     * Indicate if it's on creating mode, otherwise it's updating.
-     *
-     * @var boolean
-     */
-    protected bool $creating = true;
-
-    /**
      * Instantiate model.
      *
      * @param array<string, mixed> $data
@@ -143,6 +136,17 @@ class Model
     }
 
     /**
+     * Instantiate a model.
+     *
+     * @param array<string, mixed> $data
+     * @return static
+     */
+    protected static function make(array $data = []): static
+    {
+        return (new static)->fillRaw($data);
+    }
+
+    /**
      * Create a model.
      *
      * @param array<string, mixed> $data
@@ -152,7 +156,6 @@ class Model
     {
         $model = new static($data);
         $model = $model->save();
-        $model->creating = false;
 
         return $model;
     }
@@ -167,7 +170,7 @@ class Model
     {
         try {
             $model = new static;
-            $model->creating = false;
+
             $url = $model->getShowUrl($identifier);
     
             $params = array_merge(
@@ -208,19 +211,17 @@ class Model
      */
     public function save(): static
     {
-        $url = $this->creating ? $this->getCreateUrl() : $this->getUpdateUrl();
+        $url = empty($this->id()) ? $this->getCreateUrl() : $this->getUpdateUrl();
 
         $params = array_merge(
             $this->getDefaultParams(),
-            $this->creating ? $this->getCreateParams() : $this->getUpdateParams(),
+            empty($this->id()) ? $this->getCreateParams() : $this->getUpdateParams(),
             $this->data,
         );
 
         $data = Client::request('POST', $url, [
             'json' => $params,
         ]);
-
-        $this->creating = false;
 
         return $this->fillRaw($data);
     }
