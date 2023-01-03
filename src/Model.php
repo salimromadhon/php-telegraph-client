@@ -136,17 +136,6 @@ class Model
     }
 
     /**
-     * Instantiate a model.
-     *
-     * @param array<string, mixed> $data
-     * @return static
-     */
-    protected static function make(array $data = []): static
-    {
-        return (new static)->fillRaw($data);
-    }
-
-    /**
      * Create a model.
      *
      * @param array<string, mixed> $data

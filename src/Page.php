@@ -122,7 +122,7 @@ class Page extends Model
         $pages = $data['pages'];
 
         foreach ($pages as &$page) {
-            $page = static::make($page);
+            $page = (new static)->fillRaw($page);
         }
 
         return $pages;
