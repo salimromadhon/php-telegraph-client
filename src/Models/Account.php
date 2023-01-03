@@ -104,7 +104,7 @@ class Account extends Model
     protected function getDefaultParams(): array
     {
         return [
-            'fields' => ['short_name', 'author_name', 'author_url', 'auth_url', 'page_count'],
+            'fields' => $this->attributes,
         ];
     }
 
