@@ -287,26 +287,6 @@ class Model
     }
 
     /**
-     * Get URL for indexing model.
-     *
-     * @return string
-     */
-    protected function getIndexUrl(): string
-    {
-        return '';
-    }
-
-    /**
-     * Get params for indexing models.
-     *
-     * @return array<string, mixed>
-     */
-    protected function getIndexParams(): array
-    {
-        return [];
-    }
-
-    /**
      * Get URL for showing model.
      *
      * @param string|null $identifier
