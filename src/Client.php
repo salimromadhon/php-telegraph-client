@@ -4,7 +4,7 @@ namespace SalimId\Telegraph;
 
 use Exception as PhpException;
 use GuzzleHttp\Client as Http;
-use SalimId\Telegraph\Exceptions\Exception;
+use SalimId\Telegraph\Exception;
 
 class Client
 {
@@ -79,8 +79,13 @@ class Client
                 !$response['ok'] ||
                 !isset($response['result'])
             ) {
-                var_dump($response);
-                throw new Exception('Something went wrong.');
+                $error = 'UNKNOWN.';
+
+                if (isset($response['error']) && is_string($response['error'])) {
+                    $error = $response['error'];
+                }
+
+                throw new Exception($error);
             }
 
             return $response['result'];

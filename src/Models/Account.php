@@ -2,7 +2,7 @@
 
 namespace SalimId\Telegraph\Models;
 
-use SalimId\Telegraph\Exceptions\Exception;
+use SalimId\Telegraph\Exception;
 use SalimId\Telegraph\Client;
 use SalimId\Telegraph\Model;
 

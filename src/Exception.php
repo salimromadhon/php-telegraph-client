@@ -1,6 +1,6 @@
 <?php
 
-namespace SalimId\Telegraph\Exceptions;
+namespace SalimId\Telegraph;
 
 use Exception as PhpException;
 

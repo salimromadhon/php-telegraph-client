@@ -2,7 +2,7 @@
 
 namespace SalimId\Telegraph;
 
-use SalimId\Telegraph\Exceptions\Exception;
+use SalimId\Telegraph\Exception;
 
 class Model
 {
