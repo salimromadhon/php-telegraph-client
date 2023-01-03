@@ -109,7 +109,7 @@ class Account extends Model
     }
 
     /**
-     * User the token.
+     * Use the account.
      *
      * @return static
      */
