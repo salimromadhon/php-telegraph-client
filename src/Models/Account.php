@@ -21,6 +21,7 @@ class Account extends Model
      * @var array<string>
      */
     protected array $attributes = [
+        'access_token',
         'short_name',
         'author_name',
         'author_url',

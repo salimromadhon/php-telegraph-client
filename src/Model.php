@@ -134,7 +134,7 @@ class Model
     protected function fillRaw(array $data): static
     {
         foreach ($data as $name => $value) {
-            if (is_string($name)) {
+            if (is_string($name) && in_array($name, $this->attributes)) {
                 $this->data[$name] = $value;
             }
         }
