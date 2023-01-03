@@ -60,7 +60,7 @@ class Account extends Model
     protected function getShowParams(?string $identifier = null): array
     {
         return [
-            'access_token' => $identifier ?? $this->id(),
+            $this->key => $identifier ?? $this->id(),
         ];
     }
 
@@ -115,11 +115,11 @@ class Account extends Model
      */
     public function use()
     {
-        if (empty($this->data['access_token'])) {
+        if (empty($this->id())) {
             throw new Exception('Cannot use account without token.');
         }
 
-        Client::token($this->data['access_token']);
+        Client::token($this->id());
 
         return $this;
     }
