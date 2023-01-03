@@ -75,7 +75,7 @@ class Page extends Model
     protected function getCreateParams(): array
     {
         return [
-            'title' => $this->title ?? 'Untitled',
+            'title' => $this->title ?? date('Y-m-d'),
             'content' => $this->content ?? ['Content goes here...'],
         ];
     }
