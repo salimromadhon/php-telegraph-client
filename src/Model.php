@@ -222,6 +222,10 @@ class Model
      */
     public function refresh(): static
     {
+        if (empty($this->id())) {
+            return $this;
+        }
+
         try {
             $url = $this->getShowUrl();
     
