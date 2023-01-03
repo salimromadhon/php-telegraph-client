@@ -49,11 +49,11 @@ class Client
      */
     public static function token(?string $token = null)
     {
-        if (empty(self::$token)) {
+        if (isset($token)) {
             self::$token = $token;
         }
 
-        return self::$token;
+        return self::$token ?? null;
     }
 
     /**
