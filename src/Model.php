@@ -143,17 +143,6 @@ class Model
     }
 
     /**
-     * Get models.
-     *
-     * @param array<string, mixed> $params
-     * @return array<static>
-     */
-    public static function get(array $params = []): array
-    {
-        return [];
-    }
-
-    /**
      * Create a model.
      *
      * @param array<string, mixed> $data
