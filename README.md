@@ -1,6 +1,6 @@
 # PHP Telegraph Client
 
-The PHP Telegraph Client is a set of simple classes to interact with (https://telegra.ph/)[Telegra.ph].
+The PHP Telegraph Client is a set of simple classes to interact with [https://telegra.ph/](Telegra.ph).
 
 ## Installation
 
