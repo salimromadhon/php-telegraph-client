@@ -19,11 +19,16 @@ $account = Account::create([
     'author_name' => 'John Doe',
 ]);
 
+$account = Account::find('d3b25feccb89e508a9114afb82aa421fe2a9712b963b387cc5ad71e58722');
+
+$account->short_name = 'JD';
+$account->save()->revoke();
+
 $page = $account->page()->create(['title' => 'Hello World']);
 
 $pages = $account->pages();
 
-$page = $pages->first();
+$page = $pages->first()->refresh();
 $page->title = 'My First Post';
 $page->save();
 
