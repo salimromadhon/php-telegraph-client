@@ -124,13 +124,11 @@ class Page extends Model
             throw new Exception('Failed to get pages.');
         }
 
-        $pages = $data['pages'];
+        $pages = new Collection($data['pages']);
 
-        foreach ($pages as &$page) {
-            $page = (new static)->fillRaw($page);
-        }
-
-        return new Collection($pages);
+        return $pages->map(function ($page) {
+            return (new static)->fillRaw($page);
+        });
     }
 
     /**
