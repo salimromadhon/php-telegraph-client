@@ -34,6 +34,8 @@ $page->save();
 
 $account->use();
 
+$page = Page::find('Path-To-Page-XX-XX');
+
 $page = new Page;
 $page->title = 'My Second Post';
 $page->save();
