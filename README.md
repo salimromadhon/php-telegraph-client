@@ -10,7 +10,7 @@ composer require salimid/php-telegraph-client
 
 ## Usage
 
-```
+``` php
 use SalimId\Telegraph\Account;
 use SalimId\Telegraph\Page;
 
