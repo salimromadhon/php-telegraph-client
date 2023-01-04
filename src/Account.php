@@ -5,6 +5,7 @@ namespace SalimId\Telegraph;
 use SalimId\Telegraph\Exception;
 use SalimId\Telegraph\Client;
 use SalimId\Telegraph\Model;
+use SalimId\Kit\Collection;
 
 class Account extends Model
 {
@@ -158,14 +159,14 @@ class Account extends Model
     /**
      * Get pages of the current account.
      *
+     * @param integer|null $limit
      * @param integer $offset
-     * @param integer $limit
-     * @return array<Page>
+     * @return Collection<Page>
      */
-    public function pages(int $offset = 0, int $limit = 50): array
+    public function pages(?int $limit = null, int $offset = 0): Collection
     {
         $this->use();
 
-        return Page::get($offset, $limit);
+        return Page::get($limit, $offset);
     }
 }

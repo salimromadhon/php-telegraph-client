@@ -1,9 +1,10 @@
 {
-    "name": "salimid/telegraph-client",
+    "name": "salimid/php-telegraph-client",
     "description": "Telegraph client for Telegra.ph",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "^7.5"
+        "guzzlehttp/guzzle": "^7.5",
+        "salimid/php-kit": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "^0.11.10",
@@ -11,6 +12,7 @@
         "phpstan/phpstan": "^1.9",
         "squizlabs/php_codesniffer": "^3.7"
     },
+    "minimum-stability": "dev",
     "license": "MIT",
     "autoload": {
         "psr-4": {

@@ -5,6 +5,7 @@ namespace SalimId\Telegraph;
 use SalimId\Telegraph\Exception;
 use SalimId\Telegraph\Client;
 use SalimId\Telegraph\Model;
+use SalimId\Kit\Collection;
 
 class Page extends Model
 {
@@ -105,12 +106,16 @@ class Page extends Model
     /**
      * Get pages.
      *
+     * @param integer|null $limit
      * @param integer $offset
-     * @param integer $limit
-     * @return array<static>
+     * @return Collection<Page>
      */
-    public static function get(int $offset = 0, int $limit = 50)
+    public static function get(?int $limit = null, int $offset = 0): Collection
     {
+        if (empty($limit)) {
+            return static::all();
+        }
+
         $data = Client::request('POST', '/getPageList', [
             'json' => compact('offset', 'limit'),
         ]);
@@ -125,6 +130,27 @@ class Page extends Model
             $page = (new static)->fillRaw($page);
         }
 
-        return $pages;
+        return new Collection($pages);
+    }
+
+    /**
+     * Get all pages.
+     *
+     * @return Collection<Page>
+     */
+    protected static function all()
+    {
+        $all = new Collection;
+
+        $limit = 50;
+        $iteration = 0;
+
+        do {
+            $pages = static::get($limit, $limit * $iteration++);
+
+            $all = $all->merge($pages);
+        } while ($pages->hasItems());
+
+        return $all;
     }
 }
