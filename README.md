@@ -37,6 +37,10 @@ $account->use();
 $page = new Page;
 $page->title = 'My Second Post';
 $page->save();
+
+$popular = $account->pages()->sortBy('views')->reverse()->first()->refresh();
+$popular->title = 'This Post Got ' . $popular->views . ' Views';
+$popular->save();
 ```
 
 ## License 
