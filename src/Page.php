@@ -5,7 +5,7 @@ namespace SalimId\Telegraph;
 use SalimId\Telegraph\Exception;
 use SalimId\Telegraph\Client;
 use SalimId\Telegraph\Model;
-use SalimId\Kit\Collection;
+use Paragraf\Kit\Collection;
 
 class Page extends Model
 {
