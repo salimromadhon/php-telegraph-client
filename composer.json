@@ -28,6 +28,7 @@
     "scripts": {
         "cs": "./vendor/bin/phpcs",
         "stan": "./vendor/bin/phpstan analyse --memory-limit=-1",
+        "test": "./vendor/bin/phpunit --do-not-cache-result",
         "tink": [
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/psysh"
